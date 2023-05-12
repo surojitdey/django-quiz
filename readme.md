@@ -1,3 +1,4 @@
+<h1>Quiz Application</h1>
 Following are the steps to run this application:
 1. Clone the repository
     - <code>git clone https://github.com/surojitdey/django-quiz.git</code>
