@@ -12,28 +12,32 @@
             <form id="quiz" method="POST">
                 {% csrf_token %}
                 {%if previous_country%}
-                    {% if previous_choice == correct_answer %}
+                    {% if given_answer|lower == correct_answer|lower %}
                     <div class="mt-1 p-2 bg-success text-white rounded">
                         <h3>Congratulation you have selected the correct answer</h3>
-                        <h4>Choosen answer was {{previous_choice}}.</h4>
+                        <h4>Choosen answer was {{given_answer}}.</h4>
                     </div>
                     {% else %}
                     <div class="mt-1 p-2 bg-danger text-white rounded">
-                        <h3>Choosen answer was {{previous_choice}}.</h3>
+                        <h3>Choosen answer was {{given_answer}}.</h3>
                         <h4>Capital of {{previous_country}} is {{correct_answer}}</h4>
                     </div>
                     {% endif %}
                 {% endif %}
                 <h4 class="text-primary">Capital of {{country}}</h4>
                 <input type="hidden" name="country" value="{{country}}">
-                {% for i in options %}
+                <div class="mb-3">
+                    <label for="answer" class="form-label">Answer</label>
+                    <input type="text" class="form-control" id="answer" name="answer">
+                </div>
+                <!-- {% for i in options %}
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="choice" id="flexRadioDefault_{{i}}" value="{{i}}">
                         <label class="form-check-label" for="flexRadioDefault_{{i}}">
                         {{i}}
                         </label>
                     </div>
-                {% endfor %}
+                {% endfor %} -->
                 <button type="submit" class="btn btn-outline-primary">Submit</button>
             </form>
         </div>
